@@ -3,7 +3,7 @@ set -euo pipefail
 
 echo "🔧 Ensuring pipx is installed…"
 if ! command -v pipx >/dev/null 2>&1; then
-  sudo apt-get update -y
+  # sudo apt-get update -y
   sudo apt-get install -y pipx python3-venv
 fi
 

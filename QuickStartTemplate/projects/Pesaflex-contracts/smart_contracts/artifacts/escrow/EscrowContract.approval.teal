@@ -1,0 +1,765 @@
+#pragma version 10
+#pragma typetrack false
+
+// @algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram() -> uint64:
+main:
+    intcblock 0 1 4
+    bytecblock "status" "oracleAddress" "seller" "usdcAssetId" "usdcAmount" "LOCKED_AWAITING_FIAT" "buyer" "createdAt" "timeout" 0x151f7c75 "arbitrationAddress" "COMPLETE" "DISPUTE"
+    // smart_contracts/escrow/contract.algo.ts:18
+    // export class EscrowContract extends Contract {
+    txn NumAppArgs
+    bz main_bare_routing@13
+    pushbytess 0x65f70573 0xe43c2e14 0x5b7201d5 0xb55f3301 0x3ec36782 0x7a79f030 0xbed2367e 0x526c8c44 // method "optInAsset(uint64)void", method "createEscrow(account,account,string,uint64,uint64,uint64,uint64,account,account)void", method "releaseFunds()void", method "triggerDispute()void", method "routeToArbitration()void", method "refundToSeller()void", method "getStatus()string", method "isTimeout()bool"
+    txna ApplicationArgs 0
+    match main_optInAsset_route@3 main_createEscrow_route@4 main_releaseFunds_route@5 main_triggerDispute_route@6 main_routeToArbitration_route@7 main_refundToSeller_route@8 main_getStatus_route@9 main_isTimeout_route@10
+
+main_after_if_else@17:
+    // smart_contracts/escrow/contract.algo.ts:18
+    // export class EscrowContract extends Contract {
+    intc_0 // 0
+    return
+
+main_isTimeout_route@10:
+    // smart_contracts/escrow/contract.algo.ts:191
+    // isTimeout(): boolean {
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub isTimeout
+    pushbytes 0x00
+    intc_0 // 0
+    uncover 2
+    setbit
+    bytec 9 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_getStatus_route@9:
+    // smart_contracts/escrow/contract.algo.ts:184
+    // getStatus(): string {
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub getStatus
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    bytec 9 // 0x151f7c75
+    swap
+    concat
+    log
+    intc_1 // 1
+    return
+
+main_refundToSeller_route@8:
+    // smart_contracts/escrow/contract.algo.ts:156
+    // refundToSeller(): void {
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub refundToSeller
+    intc_1 // 1
+    return
+
+main_routeToArbitration_route@7:
+    // smart_contracts/escrow/contract.algo.ts:135
+    // routeToArbitration(): void {
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub routeToArbitration
+    intc_1 // 1
+    return
+
+main_triggerDispute_route@6:
+    // smart_contracts/escrow/contract.algo.ts:118
+    // triggerDispute(): void {
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub triggerDispute
+    intc_1 // 1
+    return
+
+main_releaseFunds_route@5:
+    // smart_contracts/escrow/contract.algo.ts:97
+    // releaseFunds(): void {
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub releaseFunds
+    intc_1 // 1
+    return
+
+main_createEscrow_route@4:
+    // smart_contracts/escrow/contract.algo.ts:52-62
+    // createEscrow(
+    //   seller: Account,
+    //   buyer: Account,
+    //   tradeId: string,
+    //   usdcAssetId: AssetID,
+    //   usdcAmount: uint64,
+    //   kesExpected: uint64,
+    //   timeoutMinutes: uint64,
+    //   oracleAddr: Account,
+    //   arbitrationAddr: Account
+    // ): void {
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/escrow/contract.algo.ts:18
+    // export class EscrowContract extends Contract {
+    txna ApplicationArgs 1
+    btoi
+    txnas Accounts
+    txna ApplicationArgs 2
+    btoi
+    txnas Accounts
+    txna ApplicationArgs 3
+    extract 2 0
+    txna ApplicationArgs 4
+    btoi
+    txna ApplicationArgs 5
+    btoi
+    txna ApplicationArgs 6
+    btoi
+    txna ApplicationArgs 7
+    btoi
+    txna ApplicationArgs 8
+    btoi
+    txnas Accounts
+    txna ApplicationArgs 9
+    btoi
+    txnas Accounts
+    // smart_contracts/escrow/contract.algo.ts:52-62
+    // createEscrow(
+    //   seller: Account,
+    //   buyer: Account,
+    //   tradeId: string,
+    //   usdcAssetId: AssetID,
+    //   usdcAmount: uint64,
+    //   kesExpected: uint64,
+    //   timeoutMinutes: uint64,
+    //   oracleAddr: Account,
+    //   arbitrationAddr: Account
+    // ): void {
+    callsub createEscrow
+    intc_1 // 1
+    return
+
+main_optInAsset_route@3:
+    // smart_contracts/escrow/contract.algo.ts:37
+    // optInAsset(assetId: AssetID): void {
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/escrow/contract.algo.ts:18
+    // export class EscrowContract extends Contract {
+    txna ApplicationArgs 1
+    btoi
+    // smart_contracts/escrow/contract.algo.ts:37
+    // optInAsset(assetId: AssetID): void {
+    callsub optInAsset
+    intc_1 // 1
+    return
+
+main_bare_routing@13:
+    // smart_contracts/escrow/contract.algo.ts:18
+    // export class EscrowContract extends Contract {
+    txn OnCompletion
+    bnz main_after_if_else@17
+    txn ApplicationID
+    !
+    assert // can only call when creating
+    intc_1 // 1
+    return
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.optInAsset(assetId: uint64) -> void:
+optInAsset:
+    // smart_contracts/escrow/contract.algo.ts:37
+    // optInAsset(assetId: AssetID): void {
+    proto 1 0
+    // smart_contracts/escrow/contract.algo.ts:39-43
+    // itxn.assetTransfer({
+    //   xferAsset: Asset(assetId),
+    //   assetAmount: 0,
+    //   assetReceiver: Global.currentApplicationAddress,
+    // }).submit();
+    itxn_begin
+    // smart_contracts/escrow/contract.algo.ts:42
+    // assetReceiver: Global.currentApplicationAddress,
+    global CurrentApplicationAddress
+    itxn_field AssetReceiver
+    // smart_contracts/escrow/contract.algo.ts:41
+    // assetAmount: 0,
+    intc_0 // 0
+    itxn_field AssetAmount
+    frame_dig -1
+    itxn_field XferAsset
+    // smart_contracts/escrow/contract.algo.ts:39-43
+    // itxn.assetTransfer({
+    //   xferAsset: Asset(assetId),
+    //   assetAmount: 0,
+    //   assetReceiver: Global.currentApplicationAddress,
+    // }).submit();
+    intc_2 // 4
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    retsub
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.createEscrow(seller: bytes, buyer: bytes, tradeId: bytes, usdcAssetId: uint64, usdcAmount: uint64, kesExpected: uint64, timeoutMinutes: uint64, oracleAddr: bytes, arbitrationAddr: bytes) -> void:
+createEscrow:
+    // smart_contracts/escrow/contract.algo.ts:52-62
+    // createEscrow(
+    //   seller: Account,
+    //   buyer: Account,
+    //   tradeId: string,
+    //   usdcAssetId: AssetID,
+    //   usdcAmount: uint64,
+    //   kesExpected: uint64,
+    //   timeoutMinutes: uint64,
+    //   oracleAddr: Account,
+    //   arbitrationAddr: Account
+    // ): void {
+    proto 9 0
+    // smart_contracts/escrow/contract.algo.ts:64
+    // assert(Global.groupSize === 2, 'Must be an atomic group of 2 transactions.');
+    global GroupSize
+    pushint 2 // 2
+    ==
+    assert // Must be an atomic group of 2 transactions.
+    // smart_contracts/escrow/contract.algo.ts:67
+    // const depositTxn = gtxn.AssetTransferTxn(0);
+    intc_0 // 0
+    gtxns TypeEnum
+    dup
+    intc_2 // axfer
+    ==
+    assert // transaction type is axfer
+    // smart_contracts/escrow/contract.algo.ts:70
+    // assert(depositTxn.type === TransactionType.AssetTransfer, 'Txn 0 must be an ASA Transfer.');
+    intc_2 // 4
+    ==
+    assert // Txn 0 must be an ASA Transfer.
+    // smart_contracts/escrow/contract.algo.ts:67
+    // const depositTxn = gtxn.AssetTransferTxn(0);
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:71
+    // assert(depositTxn.sender === seller, 'Seller must be the sender of the deposit.');
+    gtxns Sender
+    frame_dig -9
+    ==
+    assert // Seller must be the sender of the deposit.
+    // smart_contracts/escrow/contract.algo.ts:67
+    // const depositTxn = gtxn.AssetTransferTxn(0);
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:72
+    // assert(depositTxn.assetReceiver === Global.currentApplicationAddress, 'Deposit must go to the Escrow App.');
+    gtxns AssetReceiver
+    global CurrentApplicationAddress
+    ==
+    assert // Deposit must go to the Escrow App.
+    // smart_contracts/escrow/contract.algo.ts:67
+    // const depositTxn = gtxn.AssetTransferTxn(0);
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:73
+    // assert(depositTxn.xferAsset.id === usdcAssetId, 'Wrong ASA ID deposited.');
+    gtxns XferAsset
+    frame_dig -6
+    ==
+    assert // Wrong ASA ID deposited.
+    // smart_contracts/escrow/contract.algo.ts:67
+    // const depositTxn = gtxn.AssetTransferTxn(0);
+    intc_0 // 0
+    // smart_contracts/escrow/contract.algo.ts:74
+    // assert(depositTxn.assetAmount === usdcAmount, 'Incorrect ASA amount deposited.');
+    gtxns AssetAmount
+    frame_dig -5
+    ==
+    assert // Incorrect ASA amount deposited.
+    // smart_contracts/escrow/contract.algo.ts:77
+    // assert(Txn.onCompletion === OnCompleteAction.NoOp, 'Must be a NoOp call.');
+    txn OnCompletion
+    !
+    assert // Must be a NoOp call.
+    // smart_contracts/escrow/contract.algo.ts:78
+    // assert(Txn.rekeyTo === Global.zeroAddress, 'RekeyTo must be zero.');
+    txn RekeyTo
+    global ZeroAddress
+    ==
+    assert // RekeyTo must be zero.
+    // smart_contracts/escrow/contract.algo.ts:20
+    // seller = GlobalState<Account>();
+    bytec_2 // "seller"
+    // smart_contracts/escrow/contract.algo.ts:81
+    // this.seller.value = seller;
+    frame_dig -9
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:21
+    // buyer = GlobalState<Account>();
+    bytec 6 // "buyer"
+    // smart_contracts/escrow/contract.algo.ts:82
+    // this.buyer.value = buyer;
+    frame_dig -8
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:22
+    // tradeId = GlobalState<string>();
+    pushbytes "tradeId"
+    // smart_contracts/escrow/contract.algo.ts:83
+    // this.tradeId.value = tradeId;
+    frame_dig -7
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:23
+    // usdcAssetId = GlobalState<uint64>();
+    bytec_3 // "usdcAssetId"
+    // smart_contracts/escrow/contract.algo.ts:84
+    // this.usdcAssetId.value = usdcAssetId;
+    frame_dig -6
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:24
+    // usdcAmount = GlobalState<uint64>();
+    bytec 4 // "usdcAmount"
+    // smart_contracts/escrow/contract.algo.ts:85
+    // this.usdcAmount.value = usdcAmount;
+    frame_dig -5
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:25
+    // kesExpected = GlobalState<uint64>();
+    pushbytes "kesExpected"
+    // smart_contracts/escrow/contract.algo.ts:86
+    // this.kesExpected.value = kesExpected;
+    frame_dig -4
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:26
+    // createdAt = GlobalState<uint64>();
+    bytec 7 // "createdAt"
+    // smart_contracts/escrow/contract.algo.ts:87
+    // this.createdAt.value = Global.latestTimestamp;
+    global LatestTimestamp
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:88
+    // this.timeout.value = timeoutMinutes * 60;
+    frame_dig -3
+    pushint 60 // 60
+    *
+    // smart_contracts/escrow/contract.algo.ts:27
+    // timeout = GlobalState<uint64>(); // In seconds
+    bytec 8 // "timeout"
+    // smart_contracts/escrow/contract.algo.ts:88
+    // this.timeout.value = timeoutMinutes * 60;
+    swap
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:32
+    // oracleAddress = GlobalState<Account>();
+    bytec_1 // "oracleAddress"
+    // smart_contracts/escrow/contract.algo.ts:89
+    // this.oracleAddress.value = oracleAddr;
+    frame_dig -2
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:29
+    // arbitrationAddress = GlobalState<Account>();
+    bytec 10 // "arbitrationAddress"
+    // smart_contracts/escrow/contract.algo.ts:90
+    // this.arbitrationAddress.value = arbitrationAddr;
+    frame_dig -1
+    app_global_put
+    // smart_contracts/escrow/contract.algo.ts:28
+    // status = GlobalState<string>(); // Trade status
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:91
+    // this.status.value = 'LOCKED_AWAITING_FIAT';
+    bytec 5 // "LOCKED_AWAITING_FIAT"
+    app_global_put
+    retsub
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.releaseFunds() -> void:
+releaseFunds:
+    // smart_contracts/escrow/contract.algo.ts:99
+    // assert(Txn.sender === this.oracleAddress.value, 'Only oracle can release funds.');
+    txn Sender
+    // smart_contracts/escrow/contract.algo.ts:32
+    // oracleAddress = GlobalState<Account>();
+    intc_0 // 0
+    bytec_1 // "oracleAddress"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:99
+    // assert(Txn.sender === this.oracleAddress.value, 'Only oracle can release funds.');
+    ==
+    assert // Only oracle can release funds.
+    // smart_contracts/escrow/contract.algo.ts:28
+    // status = GlobalState<string>(); // Trade status
+    intc_0 // 0
+    bytec_0 // "status"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:102
+    // assert(this.status.value === 'LOCKED_AWAITING_FIAT', 'Trade must be in LOCKED_AWAITING_FIAT status.');
+    bytec 5 // "LOCKED_AWAITING_FIAT"
+    ==
+    assert // Trade must be in LOCKED_AWAITING_FIAT status.
+    // smart_contracts/escrow/contract.algo.ts:105-109
+    // itxn.assetTransfer({
+    //   xferAsset: Asset(this.usdcAssetId.value),
+    //   assetAmount: this.usdcAmount.value,
+    //   assetReceiver: this.buyer.value,
+    // }).submit();
+    itxn_begin
+    // smart_contracts/escrow/contract.algo.ts:23
+    // usdcAssetId = GlobalState<uint64>();
+    intc_0 // 0
+    bytec_3 // "usdcAssetId"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:24
+    // usdcAmount = GlobalState<uint64>();
+    intc_0 // 0
+    bytec 4 // "usdcAmount"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:21
+    // buyer = GlobalState<Account>();
+    intc_0 // 0
+    bytec 6 // "buyer"
+    app_global_get_ex
+    assert // check GlobalState exists
+    itxn_field AssetReceiver
+    itxn_field AssetAmount
+    itxn_field XferAsset
+    // smart_contracts/escrow/contract.algo.ts:105-109
+    // itxn.assetTransfer({
+    //   xferAsset: Asset(this.usdcAssetId.value),
+    //   assetAmount: this.usdcAmount.value,
+    //   assetReceiver: this.buyer.value,
+    // }).submit();
+    intc_2 // 4
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    // smart_contracts/escrow/contract.algo.ts:28
+    // status = GlobalState<string>(); // Trade status
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:112
+    // this.status.value = 'COMPLETE';
+    bytec 11 // "COMPLETE"
+    app_global_put
+    retsub
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.triggerDispute() -> void:
+triggerDispute:
+    // smart_contracts/escrow/contract.algo.ts:120
+    // const isSeller = Txn.sender === this.seller.value;
+    txn Sender
+    // smart_contracts/escrow/contract.algo.ts:20
+    // seller = GlobalState<Account>();
+    intc_0 // 0
+    bytec_2 // "seller"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:120
+    // const isSeller = Txn.sender === this.seller.value;
+    ==
+    // smart_contracts/escrow/contract.algo.ts:121
+    // const isBuyer = Txn.sender === this.buyer.value;
+    txn Sender
+    // smart_contracts/escrow/contract.algo.ts:21
+    // buyer = GlobalState<Account>();
+    intc_0 // 0
+    bytec 6 // "buyer"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:121
+    // const isBuyer = Txn.sender === this.buyer.value;
+    ==
+    // smart_contracts/escrow/contract.algo.ts:122
+    // const isOracle = Txn.sender === this.oracleAddress.value;
+    txn Sender
+    // smart_contracts/escrow/contract.algo.ts:32
+    // oracleAddress = GlobalState<Account>();
+    intc_0 // 0
+    bytec_1 // "oracleAddress"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:122
+    // const isOracle = Txn.sender === this.oracleAddress.value;
+    ==
+    // smart_contracts/escrow/contract.algo.ts:123
+    // assert(isSeller || isBuyer || isOracle, 'Only seller, buyer, or oracle can trigger dispute.');
+    cover 2
+    ||
+    ||
+    assert // Only seller, buyer, or oracle can trigger dispute.
+    // smart_contracts/escrow/contract.algo.ts:28
+    // status = GlobalState<string>(); // Trade status
+    intc_0 // 0
+    bytec_0 // "status"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:126
+    // assert(this.status.value === 'LOCKED_AWAITING_FIAT', 'Trade must be in LOCKED_AWAITING_FIAT status to dispute.');
+    bytec 5 // "LOCKED_AWAITING_FIAT"
+    ==
+    assert // Trade must be in LOCKED_AWAITING_FIAT status to dispute.
+    // smart_contracts/escrow/contract.algo.ts:28
+    // status = GlobalState<string>(); // Trade status
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:129
+    // this.status.value = 'DISPUTE';
+    bytec 12 // "DISPUTE"
+    app_global_put
+    retsub
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.routeToArbitration() -> void:
+routeToArbitration:
+    // smart_contracts/escrow/contract.algo.ts:137
+    // assert(Txn.sender === this.oracleAddress.value, 'Only oracle can route to arbitration.');
+    txn Sender
+    // smart_contracts/escrow/contract.algo.ts:32
+    // oracleAddress = GlobalState<Account>();
+    intc_0 // 0
+    bytec_1 // "oracleAddress"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:137
+    // assert(Txn.sender === this.oracleAddress.value, 'Only oracle can route to arbitration.');
+    ==
+    assert // Only oracle can route to arbitration.
+    // smart_contracts/escrow/contract.algo.ts:28
+    // status = GlobalState<string>(); // Trade status
+    intc_0 // 0
+    bytec_0 // "status"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:140
+    // assert(this.status.value === 'DISPUTE', 'Escrow must be in DISPUTE status.');
+    bytec 12 // "DISPUTE"
+    ==
+    assert // Escrow must be in DISPUTE status.
+    // smart_contracts/escrow/contract.algo.ts:143-147
+    // itxn.assetTransfer({
+    //   xferAsset: Asset(this.usdcAssetId.value),
+    //   assetAmount: this.usdcAmount.value,
+    //   assetReceiver: this.arbitrationAddress.value,
+    // }).submit();
+    itxn_begin
+    // smart_contracts/escrow/contract.algo.ts:23
+    // usdcAssetId = GlobalState<uint64>();
+    intc_0 // 0
+    bytec_3 // "usdcAssetId"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:24
+    // usdcAmount = GlobalState<uint64>();
+    intc_0 // 0
+    bytec 4 // "usdcAmount"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:29
+    // arbitrationAddress = GlobalState<Account>();
+    intc_0 // 0
+    bytec 10 // "arbitrationAddress"
+    app_global_get_ex
+    assert // check GlobalState exists
+    itxn_field AssetReceiver
+    itxn_field AssetAmount
+    itxn_field XferAsset
+    // smart_contracts/escrow/contract.algo.ts:143-147
+    // itxn.assetTransfer({
+    //   xferAsset: Asset(this.usdcAssetId.value),
+    //   assetAmount: this.usdcAmount.value,
+    //   assetReceiver: this.arbitrationAddress.value,
+    // }).submit();
+    intc_2 // 4
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    // smart_contracts/escrow/contract.algo.ts:28
+    // status = GlobalState<string>(); // Trade status
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:150
+    // this.status.value = 'ARBITRATION';
+    pushbytes "ARBITRATION"
+    app_global_put
+    retsub
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.refundToSeller() -> void:
+refundToSeller:
+    // smart_contracts/escrow/contract.algo.ts:158
+    // const isSeller = Txn.sender === this.seller.value;
+    txn Sender
+    // smart_contracts/escrow/contract.algo.ts:20
+    // seller = GlobalState<Account>();
+    intc_0 // 0
+    bytec_2 // "seller"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:158
+    // const isSeller = Txn.sender === this.seller.value;
+    ==
+    // smart_contracts/escrow/contract.algo.ts:159
+    // const isOracle = Txn.sender === this.oracleAddress.value;
+    txn Sender
+    // smart_contracts/escrow/contract.algo.ts:32
+    // oracleAddress = GlobalState<Account>();
+    intc_0 // 0
+    bytec_1 // "oracleAddress"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:159
+    // const isOracle = Txn.sender === this.oracleAddress.value;
+    ==
+    // smart_contracts/escrow/contract.algo.ts:160
+    // assert(isSeller || isOracle, 'Only seller or oracle can request refund.');
+    ||
+    assert // Only seller or oracle can request refund.
+    // smart_contracts/escrow/contract.algo.ts:28
+    // status = GlobalState<string>(); // Trade status
+    intc_0 // 0
+    bytec_0 // "status"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:163
+    // assert(this.status.value === 'LOCKED_AWAITING_FIAT', 'Trade must be in LOCKED_AWAITING_FIAT status.');
+    bytec 5 // "LOCKED_AWAITING_FIAT"
+    ==
+    assert // Trade must be in LOCKED_AWAITING_FIAT status.
+    // smart_contracts/escrow/contract.algo.ts:166
+    // const currentTime: uint64 = Global.latestTimestamp;
+    global LatestTimestamp
+    // smart_contracts/escrow/contract.algo.ts:26
+    // createdAt = GlobalState<uint64>();
+    intc_0 // 0
+    bytec 7 // "createdAt"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:27
+    // timeout = GlobalState<uint64>(); // In seconds
+    intc_0 // 0
+    bytec 8 // "timeout"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:167
+    // const timeoutTime: uint64 = this.createdAt.value + this.timeout.value;
+    +
+    // smart_contracts/escrow/contract.algo.ts:168
+    // assert(currentTime >= timeoutTime, 'Timeout has not passed yet.');
+    >=
+    assert // Timeout has not passed yet.
+    // smart_contracts/escrow/contract.algo.ts:171-175
+    // itxn.assetTransfer({
+    //   xferAsset: Asset(this.usdcAssetId.value),
+    //   assetAmount: this.usdcAmount.value,
+    //   assetReceiver: this.seller.value,
+    // }).submit();
+    itxn_begin
+    // smart_contracts/escrow/contract.algo.ts:23
+    // usdcAssetId = GlobalState<uint64>();
+    intc_0 // 0
+    bytec_3 // "usdcAssetId"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:24
+    // usdcAmount = GlobalState<uint64>();
+    intc_0 // 0
+    bytec 4 // "usdcAmount"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:20
+    // seller = GlobalState<Account>();
+    intc_0 // 0
+    bytec_2 // "seller"
+    app_global_get_ex
+    assert // check GlobalState exists
+    itxn_field AssetReceiver
+    itxn_field AssetAmount
+    itxn_field XferAsset
+    // smart_contracts/escrow/contract.algo.ts:171-175
+    // itxn.assetTransfer({
+    //   xferAsset: Asset(this.usdcAssetId.value),
+    //   assetAmount: this.usdcAmount.value,
+    //   assetReceiver: this.seller.value,
+    // }).submit();
+    intc_2 // 4
+    itxn_field TypeEnum
+    intc_0 // 0
+    itxn_field Fee
+    itxn_submit
+    // smart_contracts/escrow/contract.algo.ts:28
+    // status = GlobalState<string>(); // Trade status
+    bytec_0 // "status"
+    // smart_contracts/escrow/contract.algo.ts:178
+    // this.status.value = 'COMPLETE'; // Or add 'REFUNDED' to TradeStatus type
+    bytec 11 // "COMPLETE"
+    app_global_put
+    retsub
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.getStatus() -> bytes:
+getStatus:
+    // smart_contracts/escrow/contract.algo.ts:28
+    // status = GlobalState<string>(); // Trade status
+    intc_0 // 0
+    bytec_0 // "status"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:185
+    // return this.status.value;
+    retsub
+
+
+// smart_contracts/escrow/contract.algo.ts::EscrowContract.isTimeout() -> uint64:
+isTimeout:
+    // smart_contracts/escrow/contract.algo.ts:192
+    // const currentTime: uint64 = Global.latestTimestamp;
+    global LatestTimestamp
+    // smart_contracts/escrow/contract.algo.ts:26
+    // createdAt = GlobalState<uint64>();
+    intc_0 // 0
+    bytec 7 // "createdAt"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:27
+    // timeout = GlobalState<uint64>(); // In seconds
+    intc_0 // 0
+    bytec 8 // "timeout"
+    app_global_get_ex
+    assert // check GlobalState exists
+    // smart_contracts/escrow/contract.algo.ts:193
+    // const timeoutTime: uint64 = this.createdAt.value + this.timeout.value;
+    +
+    // smart_contracts/escrow/contract.algo.ts:194
+    // return currentTime >= timeoutTime;
+    >=
+    retsub

@@ -5,10 +5,10 @@
       "name": "ROOT"
     },
     {
-      "path": "./projects/QuickStartTemplate-contracts"
+      "path": "./projects/Pesaflex-contracts"
     },
     {
-      "path": "./projects/QuickStartTemplate-frontend"
+      "path": "./projects/Pesaflex-frontend"
     }
   ],
   "settings": {
@@ -56,9 +56,9 @@
         "configurations": [
           {
             "name": "Deploy contracts",
-            "folder": "QuickStartTemplate-contracts"
+            "folder": "Pesaflex-contracts"
           },
-          { "name": "Run dApp", "folder": "QuickStartTemplate-frontend" }
+          { "name": "Run dApp", "folder": "Pesaflex-frontend" }
         ],
         "presentation": {
           "hidden": false,
